@@ -54,4 +54,57 @@ horse 191.756058 55.418949 229.225601 318.581055
 a photo of car 0.000000 98.398750 145.470108 92.571877
 a photo of dog 145.470108 203.093140 57.306412 156.490570
 
-```
+root@rk3568:/home/rk3568/rknpu2/examples/OWLVIT/build# ./main  --ienc  owlvit-image.onnx  --tenc  owlvit-text.onnx  -d  owlvit-post.onnx  -v  vocab.txt  -i ssd_horse.jpg  -t text.txt 
+
+inputs: 
+        pixel_values: 1 x 3 x 768 x 768[float] 
+output: 
+        image_embeds: 1 x 24 x 24 x 768 [float] 
+          pred_boxes: 1 x 576 x 4 [float] 
+[I][              load_image_encoder][  22]: input size 768 768
+[I][              load_image_encoder][  32]: image feature len 442368
+[I][              load_image_encoder][  36]: pred box cnt  576
+[I][               load_text_encoder][ 153]: text feature len 512
+[I][                            main][ 170]: image_src [ssd_horse.jpg]
+[I][                            main][ 171]: text_src [text.txt]
+lanfc stex=text.txt------------------
+encode text Inference Cost time : 1.82578s
+{
+    "test": "cat",
+    "texts_feature": "cat.bin",
+    "input_ids":[ 49406, 2368, 49407, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+{
+    "test": "dog",
+    "texts_feature": "dog.bin",
+    "input_ids":[ 49406, 1929, 49407, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+{
+    "test": "bird",
+    "texts_feature": "bird.bin",
+    "input_ids":[ 49406, 3329, 49407, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+{
+    "test": "person",
+    "texts_feature": "person.bin",
+    "input_ids":[ 49406, 2533, 49407, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+{
+    "test": "horse",
+    "texts_feature": "horse.bin",
+    "input_ids":[ 49406, 4558, 49407, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
+
+encode imag Inference Cost time : 8.33994s
+post Inference Cost time : 0.350379s
+dog 171.083221 137.190582 29.378616 30.454895
+dog 140.316650 207.184586 57.068985 138.656265
+person 270.033417 12.899776 80.040039 216.329422
+person 428.823181 123.694420 19.648987 55.240074
+horse 171.083221 137.190582 29.378616 30.454895
+horse 211.172073 67.156708 210.658859 301.599792
+
